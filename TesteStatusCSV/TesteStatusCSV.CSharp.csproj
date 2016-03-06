@@ -13,13 +13,11 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile>
-    </CompilerResponseFile>
+    <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>5.3.2f1</UnityVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -70,8 +68,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Common\GoldManager.cs" />
-    <Compile Include="Assets\Scripts\Common\UI\HealthBarController.cs" />
     <Compile Include="Assets\Scripts\Common\Animation\EasingControl.cs" />
     <Compile Include="Assets\Scripts\Common\Animation\EasingEquations.cs" />
     <Compile Include="Assets\Scripts\Common\Animation\RectTransformPositionTweener.cs" />
@@ -81,10 +77,15 @@
     <Compile Include="Assets\Scripts\Common\Animation\Tweener\TransformScaleTweener.cs" />
     <Compile Include="Assets\Scripts\Common\Animation\Tweener\Tweener.cs" />
     <Compile Include="Assets\Scripts\Common\Animation\Tweener\Vector3Tweener.cs" />
-    <Compile Include="Assets\Scripts\Common\ExperienceManager.cs" />
-    <Compile Include="Assets\Scripts\Common\GameManager.cs" />
-    <Compile Include="Assets\Scripts\Common\InventoryManager.cs" />
-    <Compile Include="Assets\Scripts\Common\TimeController.cs" />
+    <Compile Include="Assets\Scripts\Common\Managers\ExperienceManager.cs" />
+    <Compile Include="Assets\Scripts\Common\Managers\GameManager.cs" />
+    <Compile Include="Assets\Scripts\Common\Managers\GoldManager.cs" />
+    <Compile Include="Assets\Scripts\Common\Managers\InventoryManager.cs" />
+    <Compile Include="Assets\Scripts\Common\Managers\Map\MapLevelScript.cs" />
+    <Compile Include="Assets\Scripts\Common\Managers\Map\MapManager.cs" />
+    <Compile Include="Assets\Scripts\Common\Managers\Map\SubLevelScript.cs" />
+    <Compile Include="Assets\Scripts\Common\Managers\TimeController.cs" />
+    <Compile Include="Assets\Scripts\Common\UI\HealthBarController.cs" />
     <Compile Include="Assets\Scripts\Common\UI\LayoutAnchor.cs" />
     <Compile Include="Assets\Scripts\Common\UI\Panel.cs" />
     <Compile Include="Assets\Scripts\Common\UI\StatPanel.cs" />
@@ -120,11 +121,13 @@
     <Compile Include="Assets\Scripts\View Model Component\Actor\Movement\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\View Model Component\Actor\Rank.cs" />
     <Compile Include="Assets\Scripts\View Model Component\Enemy\Enemy Stats\EnemyHealth.cs" />
+    <Compile Include="Assets\Scripts\View Model Component\Enemy\Enemy Stats\EnemyStats.cs" />
     <Compile Include="Assets\Scripts\View Model Component\Enemy\EnemyMovement\Waiting Attack\BaseWaitingAttack.cs" />
+    <Compile Include="Assets\Scripts\View Model Component\Enemy\EnemyMovement\Waiting Attack\FlyingWaitingAttack.cs" />
     <Compile Include="Assets\Scripts\View Model Component\Enemy\EnemyMovement\Waiting Attack\JumpWaitingAttack.cs" />
     <Compile Include="Assets\Scripts\View Model Component\Enemy\EnemyMovement\Walk\BaseEnemyMovement.cs" />
+    <Compile Include="Assets\Scripts\View Model Component\Enemy\EnemyMovement\Walk\FlyEnemyMovement.cs" />
     <Compile Include="Assets\Scripts\View Model Component\Enemy\EnemyMovement\Walk\WalkEnemyMovement.cs" />
-    <Compile Include="Assets\Scripts\View Model Component\Enemy\Enemy Stats\EnemyStats.cs" />
     <Compile Include="Assets\Scripts\View Model Component\Status\Conditions\DurationStatusCondition.cs" />
     <Compile Include="Assets\Scripts\View Model Component\Status\Conditions\StatusCondition.cs" />
     <Compile Include="Assets\Scripts\View Model Component\Status\Effects\FireStatusEffect.cs" />
@@ -133,6 +136,5 @@
     <Compile Include="Assets\Scripts\View Model Component\Status\Effects\StatusEffect.cs" />
     <Compile Include="Assets\Scripts\View Model Component\Status\Status.cs" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>

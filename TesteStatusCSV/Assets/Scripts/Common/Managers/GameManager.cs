@@ -6,23 +6,45 @@ using System.Linq;
 [System.Serializable]
 public class GameManager : MonoBehaviour {
 
+    #region Singleton
+    public static GameManager Instance { get; private set; }
+
+    private void Awake()
+    {
+        if (Instance != null)
+        {
+            DestroyImmediate(gameObject);
+            return;
+        }
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
+    #endregion
+
     public List<GameObject> party;
     InventoryManager invManager;
     public StatPanelController statPanelController;
 
+    public const string ChangeMapNotification = "GameManager.ChangeMapNotification";
+
     #region MonoBehaviour
+    void OnEnable()
+    {
+        MapLevelScript curMap = GameObject.FindObjectOfType<MapLevelScript>();
+        MapManager.Instance.currentMap = curMap;
+        MapManager.Instance.currentMap.currentSubLevel = GameObject.Find("SubLevel 1").GetComponent<SubLevelScript>();
+    }
+
     void Start() {
-        invManager = GameObject.Find("Inventory").GetComponent<InventoryManager>();
         party = GetParty();
-        for (int i = 0; i < party.Count; i++)       
+        invManager = GameObject.Find("Inventory").GetComponent<InventoryManager>();
+        for (int i = 0; i < party.Count; i++)
             InitPlayer(party[i]);
-        
         CreateWeapons();
         statPanelController.ShowPanels(party);
     }
     #endregion
 
-    
     public void ButtonOneClick()
     {
         party[0].GetComponent<Stats>()[StatTypes.EXP] += 50;
@@ -34,13 +56,18 @@ public class GameManager : MonoBehaviour {
     }
 
     #region Private
+    
+
     List<GameObject> GetParty()
     {
         party = new List<GameObject>();
         Rank[] playerCount = GameObject.FindObjectsOfType<Rank>();
-        for (int i = 0; i < playerCount.Length; i++)
-            party.Add(GameObject.Find(string.Format("Slot {0}",i)).transform.GetChild(0).gameObject);
+        for (int i = 0; i < playerCount.Length; i++) {
+            {
+                party.Add(GameObject.Find(string.Format("Slot {0}", i)).transform.GetChild(0).gameObject);
 
+            }
+        }
         return party;
     }
 

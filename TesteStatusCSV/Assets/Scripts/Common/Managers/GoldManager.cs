@@ -32,7 +32,7 @@ public class GoldManager : MonoBehaviour
             this.PostNotification(GoldIncreasedNotification, value);
 
         gold = value;
-        Debug.Log("Gold: " + gold + ", received: " + (gold - oldGold));
+        //Debug.Log("Gold: " + gold + ", received: " + (gold - oldGold));
     }
 }
 

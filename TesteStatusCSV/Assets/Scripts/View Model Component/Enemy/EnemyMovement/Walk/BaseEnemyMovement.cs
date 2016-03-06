@@ -20,30 +20,6 @@ public abstract class BaseEnemyMovement : MonoBehaviour
         myStats = GetComponent<Stats>();
         waitingAttack = GetComponent<BaseWaitingAttack>();
     }
-
-    //Enemy AI
-    void FixedUpdate()
-    {
-        float distToBase = GetComponent<Collider2D>().bounds.extents.y;
-        bool grounded = Physics2D.Raycast(transform.localPosition, -Vector2.up, distToBase + 0.1f, LayerMask.GetMask("Ground"));
-
-        target = null;
-        target = GetClosestTarget(range);
-        if (!target)
-            GetClosestTarget(Mathf.Infinity);
-        if (!target)
-            return;
-
-        if (target && grounded)
-        {
-            float distance = (target.transform.position - transform.position).magnitude;
-            Debug.DrawRay(transform.position, target.transform.position - transform.position, (distance <= range) ? Color.green : Color.red, 0f);
-
-            if (distance > range)
-                Move(target);
-            else Attack(target);
-        }
-    }
     #endregion
 
     #region Abstract Functions
@@ -70,9 +46,9 @@ public abstract class BaseEnemyMovement : MonoBehaviour
     }
     #endregion
 
-    #region Private
+    #region Protected
     //Get the nearest target
-    GameObject GetClosestTarget(float range)
+    protected GameObject GetClosestTarget(float range)
     {
         GameObject[] gos;
         gos = GameObject.FindGameObjectsWithTag("Player");

@@ -20,6 +20,8 @@ public class EnemyHealth : MonoBehaviour
     EnemyStats eStats;
     #endregion
 
+    public const string EnemyDiedNotification = "EnemyHealth.EnemyDiedNotification";
+
     #region MonoBehaviour
     void Awake()
     {
@@ -60,11 +62,10 @@ public class EnemyHealth : MonoBehaviour
         float hp = eStats[StatTypes.HP];
         if (hp <= 0)
         {
-            Debug.Log(this.gameObject.name + " foi morto!");
-            HP = MHP;
+            Debug.Log(this.gameObject.name + " foi morto!");           
             eStats[StatTypes.Alive] = 0;
             GameObject.FindObjectOfType<GoldManager>().Gold += eStats.gold;
-
+            this.PostNotification(EnemyDiedNotification);
             this.gameObject.SetActive(false);
 
 
